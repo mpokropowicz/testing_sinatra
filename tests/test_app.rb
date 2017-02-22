@@ -51,10 +51,12 @@ class TestApp < Minitest::Test
 
 	def test_get_location
 
-		get '/location?user_name=Maxwell&?user_age=20'
+		get '/location?user_name=Maxwell&user_age=20'
 
 		assert(last_response.ok?)
 		assert(last_response.body.include?('Maxwell, what is your location?'))
+		assert(last_response.body.include?('<input type="text" name="location">'))
+		assert(last_response.body.include?('<form method="post" action="location?user_name=Maxwell&user_age=20">'))
 	end
 
 
