@@ -62,7 +62,11 @@ class TestApp < Minitest::Test
 	def test_post_location
 
 		post '/location', name: 'Maxwell', age: '20', location: 'Pittsburgh'
+		follow_redirect!
 
 		assert(last_response.ok?)
+		assert(last_response.body.include?('Maxwell'))
+		# assert(last_response.body.include?('20'))
+		# assert(last_response.body.include?('Pittsburgh'))
 	end
 end
