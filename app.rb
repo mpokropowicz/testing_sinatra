@@ -19,4 +19,10 @@ class PersonalDetailsApp < Sinatra::Base
 
 		erb :age, :locals => {name: name}
 	end
+
+	post '/age' do 
+
+		name = params[:name]
+		age = params[:age]
+	end
 end

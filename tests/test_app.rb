@@ -38,4 +38,12 @@ class TestApp < Minitest::Test
 	 	assert(last_response.body.include?('<input type="text" name="age">'))
 	 	assert(last_response.body.include?('<form method="post" action="age">'))
 	end
+
+	def test_post_age
+
+		post '/age', name: 'Maxwell', age: '20'
+		#follow_redirect!
+
+		assert(last_response.ok?)
+	end
 end
