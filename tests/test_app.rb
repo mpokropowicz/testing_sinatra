@@ -56,8 +56,13 @@ class TestApp < Minitest::Test
 		assert(last_response.ok?)
 		assert(last_response.body.include?('Maxwell, what is your location?'))
 		assert(last_response.body.include?('<input type="text" name="location">'))
-		assert(last_response.body.include?('<form method="post" action="location?user_name=Maxwell&user_age=20">'))
+		assert(last_response.body.include?('<form method="post" action="location?user_name=Maxwell&amp;user_age=20">'))
 	end
 
+	def test_post_location
 
+		post '/location', name: 'Maxwell', age: '20', location: 'Pittsburgh'
+
+		assert(last_response.ok?)
+	end
 end
