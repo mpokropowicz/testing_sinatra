@@ -45,5 +45,6 @@ class TestApp < Minitest::Test
 		#follow_redirect!
 
 		assert(last_response.ok?)
+		assert(last_response.body.include?('20'))
 	end
 end
