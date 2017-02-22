@@ -36,7 +36,7 @@ class TestApp < Minitest::Test
 		assert(last_response.ok?)
 		assert(last_response.body.include?("Hello Maxwell, what is your age?"))
 	 	assert(last_response.body.include?('<input type="text" name="age">'))
-	 	assert(last_response.body.include?('<form method="post" action="age">'))
+	 	assert(last_response.body.include?('<form method="post" action="age?name=Maxwell">'))
 	end
 
 	def test_post_age
@@ -45,8 +45,8 @@ class TestApp < Minitest::Test
 		follow_redirect!
 
 		assert(last_response.ok?)
-		assert(last_response.body.include?('20'))
 		assert(last_response.body.include?('Maxwell'))
+		assert(last_response.body.include?('20'))
 	end
 
 	def test_get_location
@@ -54,6 +54,7 @@ class TestApp < Minitest::Test
 		get '/location?user_name=Maxwell&?user_age=20'
 
 		assert(last_response.ok?)
+		assert(last_response.body.include?('Maxwell, what is your location?'))
 	end
 
 

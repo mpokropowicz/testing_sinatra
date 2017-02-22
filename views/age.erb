@@ -1,6 +1,5 @@
 Hello <%= name %>, what is your age?
-<form method="post" action="age">
+<form method="post" action="age?name=<%= name %>">
 	<input type="text" name="age">
-	<input type="text" name="name" value=<%= name %> hidden>
 	<input type="submit">
 </form>

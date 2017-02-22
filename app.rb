@@ -25,10 +25,18 @@ class PersonalDetailsApp < Sinatra::Base
 		name = params[:name]
 		age = params[:age]
 
-		redirect "/location?user_name=#{name}&?user_age=#{age}"
+		redirect "/location?user_name=#{name}&user_age=#{age}"
 	end
 
 	get '/location' do
+
+		name = params[:user_name]
+		age = params[:user_age]
+
+		erb :location,  :locals => {:name => name, :age => age}
+	end
+
+	post '/location' do
 
 
 	end
