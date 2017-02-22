@@ -42,9 +42,19 @@ class TestApp < Minitest::Test
 	def test_post_age
 
 		post '/age', name: 'Maxwell', age: '20'
-		#follow_redirect!
+		follow_redirect!
 
 		assert(last_response.ok?)
 		assert(last_response.body.include?('20'))
+		assert(last_response.body.include?('Maxwell'))
 	end
+
+	def test_get_location
+
+		get '/location?user_name=Maxwell&?user_age=20'
+
+		assert(last_response.ok?)
+	end
+
+
 end
