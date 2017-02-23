@@ -79,4 +79,13 @@ class TestApp < Minitest::Test
 		assert(last_response.body.include?('<input type="text" name="numbers">'))
 		assert(last_response.body.include?('<form method="post" action="numbers?user_name=Maxwell&amp;user_age=20&amp;user_location=Pittsburgh">'))
 	end
+
+	def test_post_numbers
+
+		post '/numbers', name: 'Maxwell', age: '20', location: 'Pittsburgh', numbers: '1,2,3'
+		follow_redirect!
+
+		assert(last_response.ok?)
+		assert(last_response.body.include?('1,2,3'))
+	end
 end
