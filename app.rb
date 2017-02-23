@@ -70,6 +70,10 @@ class PersonalDetailsApp < Sinatra::Base
 		age = params[:user_age]
 		location = params[:user_location]
 		numbers = params[:user_numbers]
+		sum = 0
+		numbers.split(",").each_with_index{|n|sum += n.to_i}
+		g_or_l = sum.to_i > age.to_i ? "greater" : "less"
 
+		erb :results, :locals => {:name => name, :age => age, :location => location, :numbers => numbers, :sum =>sum, :g_or_l => g_or_l}
 	end
 end

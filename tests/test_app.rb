@@ -88,4 +88,11 @@ class TestApp < Minitest::Test
 		assert(last_response.ok?)
 		assert(last_response.body.include?('1,2,3'))
 	end
+
+	def test_get_results
+
+		get '/results?user_name=Maxwell&user_age=20&user_location=Pittsburgh&user_numbers=1,2,3'
+
+		assert(last_response.ok?)
+	end
 end
