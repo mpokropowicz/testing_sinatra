@@ -80,3 +80,24 @@ button:hover, button:focus {
 	height: 80px;
 	margin: 0 auto;
 }
+
+.imgS {
+
+	text-align: center;
+	background: url(../images/spain.gif), url(../images/giphy.gif);
+	height: 10%;
+}
+
+.imgt {
+
+	text-align: center;
+	background: url(../images/giphy.gif);
+	height: 13%;
+}
+
+.imgc {
+
+	background: url(../images/Crabaw.gif);
+	height: 121px;
+	width: 121px;
+}
